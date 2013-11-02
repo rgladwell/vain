@@ -1,9 +1,9 @@
 package me.gladwell.vain.dependencies
 
+import java.io.File
+
 trait Resolution {
 
-  class ResolvedDependency
-
-  def resolveDependencies(dependencies: Traversable[Dependency]): Traversable[ResolvedDependency]
+  def resolveDependencies(dependencies: Traversable[Dependency]): Traversable[File]
 
 }

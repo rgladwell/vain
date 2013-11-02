@@ -11,10 +11,15 @@ private[dependencies] trait Dependencies extends Logging {
     log("initialising")
     import c.universe._
 
-    c.Expr[Unit](Apply(
-        Ident(newTermName("resolveDependencies")),
-        List(dependencies.tree)
-    ))
+    c.Expr[Unit](
+      Apply(
+        Ident(newTermName("addToClasspath")),
+        List(Apply(
+          Ident(newTermName("resolveDependencies")),
+          List(dependencies.tree)
+        ))
+      )
+    )
   }
 
 }

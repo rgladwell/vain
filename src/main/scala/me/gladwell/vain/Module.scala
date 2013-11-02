@@ -4,7 +4,8 @@ import scala.language.experimental.macros
 
 import me.gladwell.vain.dependencies._
 
-trait Module extends AetherResolution {
+trait Module {
+  this: Resolution with RuntimeClasspath =>
 
   def dependsOn(dependencies: Traversable[Dependency]) = macro manageDependencies
 
