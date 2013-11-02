@@ -2,7 +2,7 @@ package me.gladwell.vain.dependencies
 
 import java.io.File
 
-trait RuntimeClasspath {
+trait Classpath {
 
   def addToClasspath(dependencies: Traversable[File])
 
