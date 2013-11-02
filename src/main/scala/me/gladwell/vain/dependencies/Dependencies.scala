@@ -4,6 +4,7 @@ import scala.reflect.macros.Context
 import java.net.URLClassLoader
 import me.gladwell.vain.Logging
 import me.gladwell.vain.Configuration
+import java.io.File
 
 private[dependencies] trait Dependencies extends Logging {
   this: Resolution with Classpath with Configuration =>
