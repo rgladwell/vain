@@ -7,17 +7,10 @@ import scala.sys.process.Process
 import me.gladwell.vain.Configuration
 import java.util.zip.ZipInputStream
 import java.io.FileInputStream
-import me.gladwell.vain.Logging
 import java.io.FileOutputStream
-import java.nio.file.Paths
-import java.nio.file.Files
-import java.nio.charset.Charset
-import java.nio.file.StandardOpenOption
-import java.nio.ByteBuffer
-import java.nio.channels.Channels
 import java.util.jar.JarFile
 
-trait ExplodedFolderClasspath extends Classpath with Logging {
+trait ExplodedFolderClasspath extends Classpath {
   this: Configuration =>
 
   def addToClasspath(dependencies: Traversable[File]) = {
@@ -30,7 +23,6 @@ trait ExplodedFolderClasspath extends Classpath with Logging {
           if (entry.isDirectory()) {
             file.mkdirs()
           } else {
-            log(s"extracting to ${file.getAbsolutePath}")
             val in = jar.getInputStream(entry)
             val out = new FileOutputStream(file)
             while (in.available() > 0) {
