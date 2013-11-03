@@ -14,6 +14,7 @@ import org.eclipse.aether.repository.RemoteRepository
 import org.eclipse.aether.resolution.ArtifactRequest
 import org.eclipse.aether.artifact.DefaultArtifact
 import java.io.File
+import me.gladwell.vain.Dep
 
 trait AetherResolution extends Resolution with Logging {
 
@@ -49,7 +50,7 @@ trait AetherResolution extends Resolution with Logging {
     new RemoteRepository.Builder( "central", "default", "http://repo1.maven.org/maven2/" ).build()
   }
 
-  override def resolveDependencies(dependencies: Traversable[Dependency]): Traversable[File] = {
+  override def resolveDependencies(dependencies: Seq[Dep]): Seq[File] = {
     log(s"resolving dependencies=$dependencies using aether")
     dependencies.map(dependency => {
         val artifactRequest = new ArtifactRequest()

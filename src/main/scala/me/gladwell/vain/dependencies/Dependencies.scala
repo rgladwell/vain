@@ -5,20 +5,21 @@ import java.net.URLClassLoader
 import me.gladwell.vain.Logging
 import me.gladwell.vain.Configuration
 import java.io.File
+import me.gladwell.vain.Dep
 
 private[dependencies] trait Dependencies extends Logging {
   this: Resolution with Classpath with Configuration =>
 
-  def manageDependencies(c: Context)(dependencies: c.Expr[Traversable[Dependency]]): c.Expr[Unit] = {
+  def manageDependencies(c: Context)(dependencies: c.Expr[Traversable[Dep]]): c.Expr[Unit] = {
     log("initialising")
     import c.universe._
 
     println(showRaw(dependencies))
 
-    def parseDependency(tree: Tree): Dependency = {
+    def parseDependency(tree: Tree): Dep = {
       tree match {
         case Apply(_, List(Literal(Constant(group: String)), Literal(Constant(name: String)), Literal(Constant(version: String)))) => {
-          JavaLibrary(group, name, version)
+          Dep(group, name, version)
         }
       }
     }
