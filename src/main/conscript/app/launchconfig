@@ -2,7 +2,7 @@
   version: 1.0.0-SNAPSHOT
   org: me.gladwell
   name: vain
-  class: me.gladwell.Vain
+  class: me.gladwell.vain.App
 [scala]
   version: 2.10.3
 [repositories]
