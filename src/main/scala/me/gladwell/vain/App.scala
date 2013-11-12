@@ -10,14 +10,7 @@ class App extends xsbti.AppMain {
 
 }
 
-object App extends Logging with ScalaCompiler {
-
-  def run(args: Array[String]): Int = {
-    log("executing vain with arguments=" + args.mkString(" "))
-    val path = args.head
-    compile(path)
-    0
-  }
+object App extends BuildApp with ScalaCompiler {
 
   def main(args: Array[String]) {
     System.exit(run(args))
