@@ -19,10 +19,14 @@ trait ExplodedFolderClasspath extends Classpath {
         val jar = new JarFile(jarFile)
         import scala.collection.JavaConversions._
         jar.entries.foreach{ entry =>
-          val file = new java.io.File(compileClasspath + java.io.File.separator + entry.getName());
-          if (entry.isDirectory()) {
+          val file = new java.io.File(compileClasspath + java.io.File.separator + entry.getName())
+          println(file.getAbsolutePath)
+          if (entry.isDirectory) {
             file.mkdirs()
           } else {
+            if(!file.getParentFile.exists) {
+              file.getParentFile.mkdirs()
+            }
             val in = jar.getInputStream(entry)
             val out = new FileOutputStream(file)
             while (in.available() > 0) {

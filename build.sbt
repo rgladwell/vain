@@ -30,3 +30,5 @@ libraryDependencies += "org.eclipse.aether" % "aether-transport-file" % "0.9.0.M
 libraryDependencies += "org.eclipse.aether" % "aether-transport-http" % "0.9.0.M3"
 
 libraryDependencies += "org.apache.maven" % "maven-aether-provider" % "3.1.1"
+
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.0" % "test"
