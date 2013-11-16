@@ -1,12 +1,10 @@
 package me.gladwell.vain.dependencies
 
-import org.scalatest.{FlatSpec, GivenWhenThen}
-
 import java.io.File
-
 import me.gladwell.vain.Configuration
+import me.gladwell.vain.Specification
 
-class ExplodedFolderClasspathSpec extends FlatSpec with GivenWhenThen {
+class ExplodedFolderClasspathSpec extends Specification {
 
   trait TestConfiguration extends Configuration {
     val compileClasspath = "target/test/classes"

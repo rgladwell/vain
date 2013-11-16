@@ -36,7 +36,7 @@ private[dependencies] trait Dependencies extends Logging {
         val (updated, _) = global invalidateClassPathEntries compileClasspath
         c.info(c.enclosingPosition, s"Updated symbols $updated", true)
       } else {
-        c.abort(c.enclosingPosition, s"could not find '$compileClasspath' on compile classpath=[${global.classPath.asURLs}]")
+        c.abort(c.enclosingPosition, s"could not find '$compileClasspath' on compile classpath")
       }
     }
 
