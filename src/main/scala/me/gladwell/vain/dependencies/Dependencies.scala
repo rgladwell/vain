@@ -31,13 +31,15 @@ private[dependencies] trait Dependencies extends Logging {
     val st = c.universe.asInstanceOf[scala.reflect.internal.SymbolTable]
     if (st.isCompilerUniverse) {
       val global = st.asInstanceOf[scala.tools.nsc.Global]
-      if(global.classPath.asURLs.exists(url => url.toExternalForm().contains(compileClasspath))) {
-        addToClasspath(resolveDependencies(compileDeps))
-        val (updated, _) = global invalidateClassPathEntries compileClasspath
-        c.info(c.enclosingPosition, s"Updated symbols $updated", true)
-      } else {
-        c.abort(c.enclosingPosition, s"could not find '$compileClasspath' on compile classpath")
+      
+      val classpath = global.classPath.asURLs.find(url => url.toExternalForm.contains(compileClasspath)) getOrElse {
+        c.abort(c.enclosingPosition, s"could not find '$compileClasspath' on compile classpath=${global.classPath}")
       }
+
+      addToClasspath(resolveDependencies(compileDeps))
+      println(s"classpath=$classpath")
+      val (updated, _) = global invalidateClassPathEntries classpath.toExternalForm
+      c.info(c.enclosingPosition, s"Updated symbols $updated", true)
     }
 
     c.Expr[Unit](

@@ -2,6 +2,7 @@ package me.gladwell.vain
 
 trait Configuration {
 
-  val compileClasspath: String
+  def compileClasspath: String
+  def localRepoPath: String
 
 }

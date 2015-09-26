@@ -15,8 +15,10 @@ import org.eclipse.aether.resolution.ArtifactRequest
 import org.eclipse.aether.artifact.DefaultArtifact
 import java.io.File
 import me.gladwell.vain.Dep
+import me.gladwell.vain.Configuration
 
-trait AetherResolution extends Resolution with Logging {
+trait AetherResolution extends Resolution {
+  this: Configuration with Logging =>
 
   private val system = {
     val locator = MavenRepositorySystemUtils.newServiceLocator()
@@ -37,7 +39,7 @@ trait AetherResolution extends Resolution with Logging {
 
   private val session = {
     val session = MavenRepositorySystemUtils.newSession()
-    val localRepo = new LocalRepository(".vain/local-repo")
+    val localRepo = new LocalRepository(localRepoPath)
     session.setLocalRepositoryManager(system.newLocalRepositoryManager(session, localRepo))
 
 //    session.setTransferListener(new ConsoleTransferListener())

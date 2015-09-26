@@ -4,8 +4,6 @@ import java.io.FileWriter
 
 private[vain] trait Logging {
 
-  def log(message: String) {
-    println(s"[vain] $message")
-  }
+  def log(message: String)
 
 }

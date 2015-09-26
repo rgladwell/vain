@@ -2,6 +2,7 @@ package me.gladwell.vain
 
 trait DefaultConfiguration extends Configuration {
 
-  val compileClasspath = "target/classes"
+  def compileClasspath = "target/classes"
+  def localRepoPath = ".vain/local-repo"
 
 }

@@ -5,6 +5,6 @@ import scala.reflect.macros.Context
 import scala.tools.nsc.typechecker.Macros
 import java.net.URLClassLoader
 
-package object dependencies extends Dependencies with AetherResolution with ExplodedFolderClasspath with DefaultConfiguration {
+package object dependencies extends Dependencies with AetherResolution with ExplodedFolderClasspath with DefaultConfiguration with ConsoleLogging {
 
 }

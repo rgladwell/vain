@@ -2,14 +2,13 @@ package me.gladwell.vain.dependencies
 
 import java.io.File
 import java.net.URLClassLoader
-
-import me.gladwell.vain.Specification
+import me.gladwell.vain.{ConsoleLogging, Specification}
 
 class JavaRuntimeClasspathSpec extends Specification {
 
   "ExplodedFolderClasspath" should "explode Java archives to configured classpath folder" in {
     Given("a test runtime classpath")
-    object classpath extends JavaRuntimeClasspath
+    object classpath extends JavaRuntimeClasspath with ConsoleLogging
 
     When("an archive is added to the classpath")
     val file = new File("src/test/scala/me/gladwell/vain/dependencies/archive.zip")

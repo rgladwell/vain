@@ -10,7 +10,7 @@ class App extends xsbti.AppMain {
 
 }
 
-object App extends BuildApp with ScalaCompiler {
+object App extends BuildApp with ScalaCompiler with DefaultConfiguration with ConsoleLogging {
 
   def main(args: Array[String]) {
     System.exit(run(args))

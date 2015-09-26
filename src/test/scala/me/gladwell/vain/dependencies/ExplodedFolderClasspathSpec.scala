@@ -8,6 +8,7 @@ class ExplodedFolderClasspathSpec extends Specification {
 
   trait TestConfiguration extends Configuration {
     val compileClasspath = "target/test/classes"
+    val localRepoPath = ""
   }
 
   "ExplodedFolderClasspath" should "explode Java archives to configured classpath folder" in {

@@ -1,15 +1,15 @@
 package me.gladwell.vain.dependencies
 
-import org.scalatest.Args
-import me.gladwell.vain.Specification
-import me.gladwell.vain.Dep
 import java.io.File
+
+import me.gladwell.vain.{ConsoleLogging, DefaultConfiguration, Dep, Specification}
+import org.scalatest.Args
 
 class AetherResolutionSpec extends Specification {
 
   "AetherResolution" should "resolve remote dependencies" in {
     Given("a resolver")
-    object resolver extends AetherResolution
+    object resolver extends AetherResolution with DefaultConfiguration with ConsoleLogging
 
     When("dependency is resolved")
     resolver.resolveDependencies(Seq(Dep(group = "commons-lang", name = "commons-lang", version = "2.4")))
